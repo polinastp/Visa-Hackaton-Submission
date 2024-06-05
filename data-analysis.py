@@ -14,17 +14,6 @@ def persona_analysis(data):
     print(persona_summary)
 
 
-# def energy_consumption_insights(data):
-#     energy_categories = [4812, 5815, 5734, 5732, 4900, 5816]  # energy-related transactions
-#     energy_data = data[data['mrch_catg_cd'].isin(energy_categories)].copy()
-#     energy_data = energy_data.dropna(subset=['cpd_dt'])
-#     energy_data.loc[:, 'cpd_dt'] = pd.to_datetime(energy_data['cpd_dt'], format='%Y-%m-%d', errors='coerce')
-#     energy_data = pd.get_dummies(energy_data, columns = ['cluster_name_adjusted', 'mrch_catg_cd', 'mrch_catg_rlup_nm', 'merchant', 'city_name', 'country_code'])
-#     energy_summary = energy_data.groupby(['cpd_dt'], as_index=False).mean()
-#     energy_summary['Month'] = energy_summary['cpd_dt'].dt.strftime('%Y-%m')
-#     energy_summary = energy_summary[['Month', 'spend']]  # select the columns you're interested in
-#     energy_summary.columns = ['Month', 'Total Energy Spend']
-#     print(energy_summary)
 def energy_consumption_insights(data):
     energy_categories = [4812, 5815, 5734, 5732, 4900, 5816]  # energy-related transactions
     energy_data = data[data['mrch_catg_cd'].isin(energy_categories)].copy()
