@@ -11,7 +11,8 @@ def persona_analysis(data):
         'mrch_catg_cd': 'nunique'
     }).reset_index()
     persona_summary.columns = ['Persona', 'Total Spend', 'Average Spend', 'Transaction Count', 'Unique Merchant Categories']
-    print(persona_summary)
+    # print(persona_summary)
+    persona_summary.to_csv('data/persona_analysis.csv')
 
 
 def energy_consumption_insights(data):
@@ -25,7 +26,8 @@ def energy_consumption_insights(data):
     energy_summary['Date'] = energy_summary['cpd_dt'].dt.strftime('%Y-%m-%d')
     energy_summary = energy_summary[['Date', 'spend', 'Total Transaction Count']]  # select the columns you're interested in
     energy_summary.columns = ['Date', 'Total Energy Spend', 'Total Transaction Count']
-    print(energy_summary)
+    # print(energy_summary)
+    energy_summary.to_csv('data/energy_consumption_insights.csv')
 
 def financial_insights(data):
     financial_summary = data.groupby(data['cpd_dt']).agg({
@@ -33,7 +35,8 @@ def financial_insights(data):
         'mrch_catg_cd': 'nunique'
     }).reset_index()
     financial_summary.columns = ['Month', 'Total Spend', 'Average Spend', 'Transaction Count', 'Unique Merchant Categories']
-    print(financial_summary)
+    # print(financial_summary)
+    financial_summary.to_csv('data/financial_insights.csv')
 
 
 persona_analysis(df)
